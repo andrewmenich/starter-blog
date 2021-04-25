@@ -31,10 +31,7 @@
       css and js files. It will return nothing when the webpack dev server is
       running because styles are then injected via js.
     #}
-    {% set stylesheet = rev('main.css') %}
-    {% if stylesheet %}
-      <link rel="stylesheet" href="{{ rev('main.css') }}">
-    {% endif %}
+    {{ craft.twigpack.includeCssModule("/css/main.css") }}
 
   </head>
   <body class="ltr">
@@ -81,12 +78,6 @@
       &copy; {{ now | date('Y') }}, Built with <a class="text-blue-600" href="https://craftcms.com">Craft CMS</a>
     </footer>
 
-    {#
-      As in the <head> section above, the Asset Rev plugin provides the `rev()`
-      function to cache-bust the js file. Unlike the CSS <link> tag in the <head>,
-      this works just fine with the webpack dev server. See the `/config/assetrev.php`
-      file to see how it is configured.
-    #}
-    <script src="{{ rev('main.js') }}"></script>
+    {{ craft.twigpack.includeJsModule("/js/index.js") }}
   </body>
 </html>
