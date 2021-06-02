@@ -1,9 +1,13 @@
-dateModified: 1619321360
+dateModified: 1615910473
 email:
   fromEmail: sam@craftcms.com
   fromName: 'Craft Blog'
   transportType: craft\mail\transportadapters\Sendmail
 plugins:
+  assetrev:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
   gatsby-helper:
     edition: standard
     enabled: true
@@ -21,10 +25,6 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 2.3.0
-  twigpack:
-    edition: standard
-    enabled: true
-    schemaVersion: 1.0.0
   typogrify:
     edition: standard
     enabled: true
@@ -33,7 +33,7 @@ system:
   edition: pro
   live: true
   name: 'Craft Blog'
-  schemaVersion: 3.6.8
+  schemaVersion: 3.6.6
   timeZone: America/Los_Angeles
 users:
   allowPublicRegistration: false
