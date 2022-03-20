@@ -1,4 +1,4 @@
-dateModified: 1644950041
+dateModified: 1647716263
 email:
   fromEmail: support@craftcms.com
   fromName: 'Craft Blog'
@@ -37,10 +37,6 @@ meta:
     f3400d6f-0f33-4cef-9521-f8f6620399ec: 'Craft Blog' # Craft Blog
     fb2f8912-57ad-4b4e-887d-e55f22a6d348: Embed # Embed
 plugins:
-  assetrev:
-    edition: standard
-    enabled: true
-    schemaVersion: 1.0.0
   gatsby-helper:
     edition: standard
     enabled: true
@@ -58,6 +54,10 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 2.3.0
+  twigpack:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
   typogrify:
     edition: standard
     enabled: true

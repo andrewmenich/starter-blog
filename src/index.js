@@ -3,6 +3,9 @@
  */
 import './scripts/bootstrap-carousel';
 
+if(module.hot){
+    module.hot.accept();
+}
 /**
  * Bootstrap carousel standalone from https://codepen.io/derekjp/pen/QjmxdK
  */

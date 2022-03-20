@@ -1,8 +1,8 @@
 <?php
 
-$host = getenv('HMR_HOST');
 $port = getenv('HMR_PORT');
-$path = getenv('HMR_PATH');
+$https = getenv('HMR_HTTPS');
+$protocol = $https === 'true' ? 'https://' : 'http://';
 
 return [
     // Global settings
@@ -28,8 +28,8 @@ return [
         ],
         // webpack-dev-server config
         'devServer' => [
-            'manifestPath' => "http://localhost:8080/${path}",
-            'publicPath' => "http://${host}:${port}/${path}",
+            'manifestPath' => "http://localhost:8080/",
+            'publicPath' => "${protocol}localhost:${port}/",
         ],
         // Bundle to use with the webpack-dev-server
         'devServerBuildType' => 'modern',

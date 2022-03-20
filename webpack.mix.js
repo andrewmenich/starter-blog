@@ -3,31 +3,33 @@ let mix = require('laravel-mix');
 const env = (envVar) => (
   process.env[envVar]
 );
-
+const https = env('HMR_HTTPS') === 'true';
 // ? ========== DEVELOPMENT SETTINGS ==========
 if(!mix.inProduction()){
-  mix.setPublicPath('web/assets/build/')
+  mix.setPublicPath('./web/')
      .js('./src/index.js', 'js')
      .sass('./src/styles/main.scss', 'css')
      .sourceMaps(true, 'source-map');
   mix.webpackConfig({
       target: 'web',
       output: {
-        publicPath: `http://${env('HMR_HOST')}:${env('HMR_PORT') + env('HMR_PATH')}`
+        publicPath: `${https ? 'https://' : 'http://'}${env('HMR_CLIENT_HOST')}:${env('HMR_PORT') + env('HMR_PATH')}`
       },
       devServer:{
+        allowedHosts: "all",
         host: '0.0.0.0',
-        port: 3000,
-        dev: {
-          publicPath: env('HMR_PATH'),
-        },
+        port: env('HMR_PORT'),
+        https: https,
         client: {
-          port: 3000,
-          host: env('HMR_HOST'),
+          logging: 'verbose',
           overlay: true,
-          progress: false,
+          progress: true,
+          reconnect: 5,
+          webSocketURL: {
+            hostname: env('HMR_CLIENT_HOST'),
+            port: env('HMR_PORT'),
+          },
         },
-        firewall: false,
         static: {
           directory: './templates',
           publicPath: '/',
@@ -36,7 +38,7 @@ if(!mix.inProduction()){
         liveReload: true,
       },
       infrastructureLogging: {
-        level: 'log',
+        level: 'verbose',
       },
     });
   mix.autoload({
